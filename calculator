@@ -155,7 +155,7 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 #calculator.java
-package com.example.shopping;
+package com.example.calculatorog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -166,9 +166,10 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
     Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,ba,be;
-    int n1,n2,n3,n4,n5,n6,n7,n8,n9,n0;
+    int n1,n2,n3,n4,n5,n6,n7,n8,n9,n0,sum=0;
     String r="",ne,na,first,last;
     EditText result;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -277,18 +278,17 @@ public class MainActivity extends AppCompatActivity {
         be.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ne = be.getText().toString();
-//                r=r+ne;
-//                result.setText(r);
-                for(int i=0;i<r.length();i++) {
-                    if("i"!="+") {
-                        first += i;
-                        if("i"=="+"){
-                            break;
-                        }
-                        last+=i;
-                    }
+                ne = be.getText().toString();
+                r=r+ne;
+                result.setText(r);
+                String d=na;
+                String[] nums=r.split(d);
+                for(String num : nums){
+                    int temp = Integer.parseInt(num);
+                    sum=sum+temp;
                 }
+                r=r+sum;
+                result.setText(r);
             }
         });
     }
